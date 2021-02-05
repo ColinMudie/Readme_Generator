@@ -1,9 +1,10 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./generateMarkdown')
+const generateMarkdown = require('./generateMarkdown');
+const Choices = require('inquirer/lib/objects/choices');
 // TODO: Create an array of questions for user input
-const questions = ['Title of Project? ', 'Brief Description: '];
+const questions = ['What is your Name?', 'Title of Project? ', 'Brief Description: ', 'Choose a license', 'What year for the license?'];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
@@ -15,13 +16,29 @@ function writeToFile(fileName, data) {
 inquirer.prompt([
     {
         type: 'input',
-        name: "title",
+        name: "username",
         message: questions[0]
     },
     {
         type: 'input',
-        name: "description",
+        name: "title",
         message: questions[1]
+    },
+    {
+        type: 'input',
+        name: "description",
+        message: questions[2]
+    },
+    {
+        type: 'list',
+        name: 'licenseType',
+        message: questions[3],
+        choices: ['MIT License', 'GNU GPLv3', 'Apache', 'None']
+    },
+    {
+        type: 'input',
+        name: "licenseYear",
+        message: questions[4]
     }
 ]).then((data) => {
     writeToFile(data.title, data);
