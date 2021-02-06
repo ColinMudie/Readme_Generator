@@ -11,7 +11,8 @@ function renderLicenseLink(license) {}
 function renderLicenseSection(license) {
   switch (license.licenseType) {
     case 'MIT License':
-      return `MIT License
+      return `## License
+MIT License
 Copyright (c) [${license.licenseYear}] [${license.username}]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,7 +34,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.`
 //////////////////////////////////////
     case 'GNU GPLv3':
-      return `Copyright (C) <${license.licenseYear}>  <${license.username}>
+      return `## License
+Copyright (C) <${license.licenseYear}>  <${license.username}>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -50,7 +52,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 `
 ////////////////////////////////////////
     case 'Apache':
-      return `Copyright [${license.licenseYear}] [${license.username}]
+      return `## License
+Copyright [${license.licenseYear}] [${license.username}]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -67,7 +70,7 @@ limitations under the License.`
     case 'None':
       return ''
     default:
-      break;
+      return '';
   }
 }
 
@@ -89,12 +92,11 @@ ${data.description}
 ${data.installation}
 
 ## Usage
-${data.Usage}
+${data.usage}
 
 ## Credits
 ${data.credits}
 
-## License
 ${renderLicenseSection(data)}
 `;
 }
