@@ -8,12 +8,12 @@ function renderLicenseLink(license) {}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {
-  switch (license.licenseType) {
+function renderLicenseSection(data) {
+  switch (data.licenseType) {
     case 'MIT License':
       return `## License
 MIT License
-Copyright (c) [${license.licenseYear}] [${license.username}]
+Copyright (c) [${data.licenseYear}] [${data.username}]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ SOFTWARE.`
 //////////////////////////////////////
     case 'GNU GPLv3':
       return `## License
-Copyright (C) <${license.licenseYear}>  <${license.username}>
+Copyright (C) <${data.licenseYear}>  <${data.username}>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ////////////////////////////////////////
     case 'Apache':
       return `## License
-Copyright [${license.licenseYear}] [${license.username}]
+Copyright [${data.licenseYear}] [${data.username}]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -74,6 +74,17 @@ limitations under the License.`
   }
 }
 
+function makeInstallation(data){
+  if ((data.checkbox).includes('Installation')){
+  return `## Installation
+${data.installation}`
+  }
+  else {
+    return ''
+  }
+}
+
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
@@ -88,11 +99,14 @@ ${data.description}
 * [Credits](#credits)
 * [License](#license) 
 
-## Installation
-${data.installation}
+${makeInstallation(data)}
 
 ## Usage
 ${data.usage}
+
+## Questions
+Github: [${data.github}](https://github.com/${data.github}/)
+Email: [${data.email}](${data.email})
 
 ## Credits
 ${data.credits}
