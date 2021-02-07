@@ -11,9 +11,9 @@ const readmeChoices = [
     'Usage', 
     'Credits', 
     'License',  
-    'Features', 
-    'Contributing', 
-    'Tests'
+    'Features',  
+    'Tests',
+    'User Story'
 ];
 
 const licenseChoices = [
@@ -31,6 +31,20 @@ const questions = [
     },
     {
         type: 'input',
+        name: "github",
+        message: 'What is your Github username?'
+    },
+    {
+        type: 'input',
+        name: "email",
+        message: 'What is your email address?',
+        validate: function (email)
+        {
+            return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+        }
+    },
+    {
+        type: 'input',
         name: "title",
         message: 'Title of Project?'
     },
@@ -44,6 +58,24 @@ const questions = [
         name: 'checkbox',
         message: 'Include which of the following?',
         choices: readmeChoices
+    },
+    {
+        type: 'input',
+        name: 'userStoryAsA',
+        message: 'User Story: AS A: ',
+        when: (data) => (data.checkbox).includes('User Story')
+    },
+    {
+        type: 'input',
+        name: 'userStoryIWant',
+        message: 'User Story: I WANT: ',
+        when: (data) => (data.checkbox).includes('User Story')
+    },
+    {
+        type: 'input',
+        name: 'userStorySoThat',
+        message: 'User Story: SO THAT: ',
+        when: (data) => (data.checkbox).includes('User Story')
     },
     {
         type: 'list',
@@ -78,18 +110,16 @@ const questions = [
     },
     {
         type: 'input',
-        name: "github",
-        message: 'What is your Github username?'
+        name: "features",
+        message: 'What are some of the features included in your program?',
+        when: (data) => (data.checkbox).includes('Features')
     },
     {
         type: 'input',
-        name: "email",
-        message: 'What is your email address?',
-        validate: function (email)
-        {
-            return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
-        }
-    }
+        name: "tests",
+        message: 'List any tests you wish to share',
+        when: (data) => (data.checkbox).includes('Tests')
+    },
 ];
 ;
 

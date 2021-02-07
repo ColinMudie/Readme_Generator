@@ -104,6 +104,16 @@ ${data.installation}`
   }
 }
 
+function createUserStory(data){
+  if((data.checkbox).includes('User Story')){
+    return `\`\`\`md
+    AS A ${data.userStoryAsA}
+    I WANT ${data.userStoryIWant}
+    SO THAT ${data.userStorySoThat}
+    \`\`\`
+    `
+  }
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
@@ -120,6 +130,10 @@ ${data.description}
 * [Usage](#usage)
 * [Credits](#credits)
 * [License](#license) 
+* [User Story](#UserStory)
+
+# User Story
+${createUserStory(data)}
 
 ${makeInstallation(data)}
 
