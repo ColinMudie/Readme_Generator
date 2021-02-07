@@ -1,11 +1,31 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(data) {
+  if(data.licenseType === 'none' | data.licenseType === ""){
+  return '';
+} 
+else {
+  return renderLicenseLink(data)
+}
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(data) {
+  switch (data.licenseType) {
+    case 'MIT License':
+      return `![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)`
 
+    case 'GNU GPLv3':
+      return `![License: GNU GPLv3](https://img.shields.io/badge/License-GNU_GPLv3-green.svg)`
+
+    case 'Apache':
+      return `![License: Apache](https://img.shields.io/badge/License-Apache-green.svg)`
+
+    default:
+      return '';
+  }
+}
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(data) {
@@ -89,6 +109,8 @@ ${data.installation}`
 function generateMarkdown(data) {
   return `# ${data.title}
 
+${renderLicenseBadge(data)}
+
 ## Description
 ${data.description}
 
@@ -105,7 +127,7 @@ ${makeInstallation(data)}
 ${data.usage}
 
 ## Questions
-Github: [${data.github}](https://github.com/${data.github}/)
+Github: [${data.github}](https://github.com/${data.github}/)  
 Email: [${data.email}](${data.email})
 
 ## Credits

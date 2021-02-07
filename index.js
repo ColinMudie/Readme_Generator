@@ -10,8 +10,7 @@ const readmeChoices = [
     'Installation', 
     'Usage', 
     'Credits', 
-    'License', 
-    'Badges', 
+    'License',  
     'Features', 
     'Contributing', 
     'Tests'
