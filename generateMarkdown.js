@@ -93,6 +93,9 @@ limitations under the License.`
       return '';
   }
 }
+function liveLink(data){
+  return `[${data.title} Live Link](https://${data.github}.github.io/${(data.title).replace(/ /g,"_")}/)`
+}
 
 function makeInstallation(data){
   if ((data.checkbox).includes('Installation')){
@@ -126,6 +129,20 @@ function createCredits(data){
   if((data.checkbox).includes('Credits')){
     return `## Credits
 ${data.credits}`
+  }
+}
+
+function createFeatures(data){
+  if((data.checkbox).includes('Features')){
+    return `## Features
+${data.features}`
+  }
+}
+
+function createTests(data){
+  if((data.checkbox).includes('Tests')){
+    return `## Tests
+${data.tests}`
   }
 }
 
@@ -177,9 +194,9 @@ ${renderLicenseBadge(data)}
 
 ## Description
 ${data.description}
+${liveLink(data)}
 
 ${createTableContents(data)}
-
 
 ${createUserStory(data)}
 
@@ -188,6 +205,8 @@ ${makeInstallation(data)}
 ${createUsage(data)}
 
 ${createFeatures(data)}
+
+${createTests(data)}
 
 ## Questions
 Github: [${data.github}](https://github.com/${data.github}/)  
