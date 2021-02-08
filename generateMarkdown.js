@@ -5,7 +5,7 @@ function renderLicenseBadge(data) {
   return '';
 } 
 else {
-  return renderLicenseLink(data)
+  return `${renderLicenseLink(data)}`
 }
 }
 
@@ -106,12 +106,66 @@ ${data.installation}`
 
 function createUserStory(data){
   if((data.checkbox).includes('User Story')){
-    return `\`\`\`md
-    AS A ${data.userStoryAsA}
-    I WANT ${data.userStoryIWant}
-    SO THAT ${data.userStorySoThat}
-    \`\`\`
-    `
+    return `## User Story
+\`\`\`md
+AS A ${data.userStoryAsA}
+I WANT ${data.userStoryIWant}
+SO THAT ${data.userStorySoThat}
+\`\`\``
+  }
+}
+function createUsage(data){
+  if((data.checkbox).includes('Usage')){
+    return `## Usage
+${data.usage}`
+  }
+}
+
+
+function createCredits(data){
+  if((data.checkbox).includes('Credits')){
+    return `## Credits
+${data.credits}`
+  }
+}
+
+function createTableContents(data){
+  if((data.checkbox).includes("Table of Contents")){
+    let table = `## Table of Contents
+`
+      if ((data.checkbox).includes('User Story')) {
+        table = table.concat(`
+* [User Story](#user-story)`)
+      }
+      if ((data.checkbox).includes('Installation')) {
+        table = table.concat(`
+* [Installation](#installation)`)
+      }
+      if ((data.checkbox).includes('Usage')) {
+        table = table.concat(`
+* [Usage](#usage)`)
+      }
+      if ((data.checkbox).includes('Features')) {
+        table = table.concat(`
+* [Features](#features)`)
+      }
+      if ((data.checkbox).includes('Tests')) {
+        table = table.concat(`
+* [Tests](#tests)`)
+      }
+      table.concat(`
+* [Questions](#questions)`)
+      if ((data.checkbox).includes('Credits')) {
+        table = table.concat(`
+* [Credits](#credits)`)
+      }
+      if ((data.checkbox).includes('License')) {
+        table = table.concat(`
+* [License](#license)`)
+      }
+      table.concat(`
+---`)
+      return table
   }
 }
 
@@ -124,28 +178,22 @@ ${renderLicenseBadge(data)}
 ## Description
 ${data.description}
 
-## Table of Contents
+${createTableContents(data)}
 
-* [Installation](#installation)
-* [Usage](#usage)
-* [Credits](#credits)
-* [License](#license) 
-* [User Story](#UserStory)
 
-# User Story
 ${createUserStory(data)}
 
 ${makeInstallation(data)}
 
-## Usage
-${data.usage}
+${createUsage(data)}
+
+${createFeatures(data)}
 
 ## Questions
 Github: [${data.github}](https://github.com/${data.github}/)  
 Email: [${data.email}](${data.email})
 
-## Credits
-${data.credits}
+${createCredits(data)}
 
 ${renderLicenseSection(data)}
 `;
