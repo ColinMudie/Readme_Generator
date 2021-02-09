@@ -102,9 +102,6 @@ function makeInstallation(data){
   return `## Installation
 ${data.installation}`
   }
-  else {
-    return ''
-  }
 }
 
 function createUserStory(data){
@@ -115,12 +112,16 @@ AS A ${data.userStoryAsA}
 I WANT ${data.userStoryIWant}
 SO THAT ${data.userStorySoThat}
 \`\`\``
+  } else {
+    return ''
   }
 }
 function createUsage(data){
   if((data.checkbox).includes('Usage')){
     return `## Usage
 ${data.usage}`
+  } else {
+    return ''
   }
 }
 
@@ -129,6 +130,8 @@ function createCredits(data){
   if((data.checkbox).includes('Credits')){
     return `## Credits
 ${data.credits}`
+  } else {
+    return ''
   }
 }
 
@@ -136,6 +139,8 @@ function createFeatures(data){
   if((data.checkbox).includes('Features')){
     return `## Features
 ${data.features}`
+  } else {
+    return ''
   }
 }
 
@@ -143,6 +148,8 @@ function createTests(data){
   if((data.checkbox).includes('Tests')){
     return `## Tests
 ${data.tests}`
+  } else {
+    return ''
   }
 }
 
@@ -170,7 +177,7 @@ function createTableContents(data){
         table = table.concat(`
 * [Tests](#tests)`)
       }
-      table.concat(`
+      table = table.concat(`
 * [Questions](#questions)`)
       if ((data.checkbox).includes('Credits')) {
         table = table.concat(`
@@ -194,6 +201,7 @@ ${renderLicenseBadge(data)}
 
 ## Description
 ${data.description}
+
 ${liveLink(data)}
 
 ${createTableContents(data)}
