@@ -5,8 +5,6 @@
 ## Description
 this application is designed to create a readme file based on user inputs in the command prompt. The questions are asked using the npm Inquirer. There are questions that will only be asked if the user wants to include that information, this also applies as to what will display in the table of contents. The users Github and email will be linked in a section marked Questions. The live link is determined that the name of the Github repository is the same as the title entered. If a license is slected, the corresponding badge will appear at the top of the readme file.
 
-[Readme Generator Live Link](https://ColinMudie.github.io/Readme_Generator/)
-
 ## Table of Contents
 
 * [User Story](#user-story)
