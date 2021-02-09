@@ -2,8 +2,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./generateMarkdown');
-const Choices = require('inquirer/lib/objects/choices');
-const validator = require('validator');
 // TODO: Create an array of questions for user input
 const readmeChoices = [
     'Table of Contents', 
@@ -13,7 +11,8 @@ const readmeChoices = [
     'License',  
     'Features',  
     'Tests',
-    'User Story'
+    'User Story',
+    'Live Link to Webpage'
 ];
 
 const licenseChoices = [
@@ -129,7 +128,7 @@ function writeToFile(fileName, data) {
     console.log(fileName);
     console.log(data);
     fs.writeFile(`README.md`, generateMarkdown(data), (err) => 
-    err ? console.log(err) : console.log('it works'));
+    err ? console.log(err) : console.log('it worked!'));
 }
 
 // TODO: Create a function to initialize app

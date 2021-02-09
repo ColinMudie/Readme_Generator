@@ -94,7 +94,9 @@ limitations under the License.`
   }
 }
 function liveLink(data){
-  return `[${data.title} Live Link](https://${data.github}.github.io/${(data.title).replace(/ /g,"_")}/)`
+  if((data.checkbox).includes('Live Link to Webpage')){
+    return `[${data.title} Live Link](https://${data.github}.github.io/${(data.title).replace(/ /g,"_")}/)`
+  }
 }
 
 function makeInstallation(data){
